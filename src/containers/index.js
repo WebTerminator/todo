@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { addTodo} from '../actions'
-import App from './../App'
+import { addTodo } from './../actions'
+import App from './../components/App'
 
 const mapStateToProps = state => ({
   todos: state.getToDo

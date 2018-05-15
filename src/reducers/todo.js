@@ -1,6 +1,6 @@
-import { todos } from './data'
+import { todos } from './../data'
 
-export const getToDo = (state = todo, action) => {
+export const getToDo = (state = todos, action) => {
     switch (action.type) {
       case 'ADD_TODO':
         const { id, title, date, status } = action
