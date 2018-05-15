@@ -5,3 +5,8 @@ export const addTodo = (id, title, date, status) => ({
     date,
     status
 })
+
+export const deleteTodo = id => ({
+    type: 'DELETE_TODO',
+    id
+})

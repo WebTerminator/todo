@@ -54,7 +54,7 @@ class App extends Component {
   }
 
   render() {
-    const { todos } = this.props
+    const { todos, deleteTodo } = this.props
     return (
       <div className="app">
         <header className="app-header"></header>
@@ -62,7 +62,7 @@ class App extends Component {
           <div className="app-list">
             <div className="app-task">
               <h2>Todos</h2>
-              {renderTodos(todos)}
+              {renderTodos(todos, deleteTodo)}
             </div>
           </div>
         </section>
@@ -79,7 +79,7 @@ class App extends Component {
         </footer>
         <div className="overlay app-new-task">
           <form>
-            {/* create array to read inouts from */}
+            {/* create array to read inputs from */}
             <Input name="title" type="text" onChange={this.handleOnChange} />
             <Input name="date" type="date"  onChange={this.handleOnChange} />
             <Input name="status" type="text"  onChange={this.handleOnChange} />
