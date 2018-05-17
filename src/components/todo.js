@@ -2,9 +2,13 @@ import React, { Component } from 'react';
 
 class Todo extends Component {
     handleDelete = e => {
-        console.log(e.target.dataset.id)
         this.props.deleteTodo(e.target.dataset.id)
     }
+
+    handleUpdate = e => {
+        this.props.updateTodo(e)
+    }
+
     render() {
         const { 
             id, 
@@ -23,7 +27,8 @@ class Todo extends Component {
                     {status}
                 </p>
                 <button 
-                    onClick={updateTodo}>
+                    data-id={id}
+                    onClick={this.handleUpdate}>
                         edit
                 </button>
                 <button data-id={id} onClick={this.handleDelete}>delete</button>
@@ -32,7 +37,7 @@ class Todo extends Component {
     }
 }
 
-const renderTodos = (todos, deleteTodo) => {
+const renderTodos = (todos, updateTodo, deleteTodo) => {
     const todosList = todos.map((el, i) => 
         <Todo 
             key={el.title} 
@@ -40,6 +45,7 @@ const renderTodos = (todos, deleteTodo) => {
             date={el.date} 
             status={el.status}
             id={el.id}
+            updateTodo={updateTodo}
             deleteTodo={deleteTodo}
         />
     )

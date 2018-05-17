@@ -18,3 +18,10 @@ it('should create an action to remove a todo', () => {
     }
     expect(actions.deleteTodo(2)).toEqual(expectedTodo)
 })
+
+it('should create an action to update a todo', () => {
+    const expectedTodo = {
+        type: 'UPDATE_TODO'
+    }
+    expect(actions.updateTodo()).toEqual(expectedTodo)
+})

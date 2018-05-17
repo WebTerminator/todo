@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import Input from './../input'
 import renderTodos from './todo'
 
-import { getValue, isName } from './../util/'
+import Form from './form'
+
 import random  from 'random-utility'
+import { getValue, isName } from './../util/'
 
 class App extends Component {
   constructor(props) {
@@ -12,8 +14,27 @@ class App extends Component {
     this.state = {
       title: "",
       date: "",
-      status: ""
+      status: "",
+      selectedTodo: ""
     }
+  }
+
+  getTodoID = e => e.target.dataset.id
+
+  handleFormData = e => {
+    const { todos } = this.props
+    let editedTodo
+
+    for(let i = 0; i < todos.length; i++){
+      if(todos[i].id === this.getTodoID(e)){
+        editedTodo = todos[i]
+      }
+    }
+    this.setState({
+      title: editedTodo.title,
+      date: editedTodo.date,
+      status: editedTodo.status
+    })
   }
 
   handleOnChange = e => {
@@ -38,7 +59,7 @@ class App extends Component {
     }
   }
 
-  submitForm = e => {
+submitForm = e => {
     e.preventDefault()
 
     const { addTodo } = this.props
@@ -62,7 +83,7 @@ class App extends Component {
           <div className="app-list">
             <div className="app-task">
               <h2>Todos</h2>
-              {renderTodos(todos, deleteTodo)}
+              {renderTodos(todos, this.handleFormData, deleteTodo)}
             </div>
           </div>
         </section>
@@ -78,14 +99,14 @@ class App extends Component {
           </nav>
         </footer>
         <div className="overlay app-new-task">
-          <form>
-            {/* create array to read inputs from */}
-            <Input name="title" type="text" onChange={this.handleOnChange} />
-            <Input name="date" type="date"  onChange={this.handleOnChange} />
-            <Input name="status" type="text"  onChange={this.handleOnChange} />
-
-            <button onClick={this.submitForm}>create</button>
-          </form>
+          <Form 
+            onChange={this.handleOnChange} 
+            submitForm={this.submitForm} 
+            editedTodo={this.state.selectedTodo}
+            title={this.state.title}
+            date={this.state.date}
+            status={this.state.status}
+          />
         </div>
       </div>
     );
