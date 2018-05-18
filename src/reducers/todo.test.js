@@ -36,3 +36,7 @@ it('should remove a todo', () => {
     expect(reducer(state, actionDelete)).toEqual([])
 })
 
+it('should updated an exsisting todo', () => {
+    
+})
+
