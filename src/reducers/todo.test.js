@@ -46,8 +46,8 @@ it('should updated an exsisting todo', () => {
     } 
 
     const updatedTodos = [
-        {id: 'id-4',  title: 'Tommy', date: 'today', status: 'to do'},
-        {id: 'id-23', title: 'Mills', date: 'tomorrow',    status: 'to do'}
+        {id: 'id-4',  title: 'Tommy', date: 'tomorrow', status: 'to do'},
+        {id: 'id-23', title: 'Mills', date: 'tomorrow', status: 'to do'}
     ]
 
     expect(reducer(todos, actionUpdate)).toEqual(updatedTodos)

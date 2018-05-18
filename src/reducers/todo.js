@@ -20,6 +20,8 @@ const getToDo = (state = todos, action) => {
               let itemWrapper = {...item}
               if(item.id === action.id){
                 itemWrapper.title = action.title
+                itemWrapper.date = action.date
+                itemWrapper.status = action.status
               }
               return itemWrapper
             })

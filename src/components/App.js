@@ -16,7 +16,8 @@ class App extends Component {
       date: "",
       status: "",
       selectedTodoID: "",
-      isEditingTrue: false
+      isEditingTrue: false,
+      isFormVisible: false
     }
   }
 
@@ -61,7 +62,13 @@ class App extends Component {
         status: value
       })
     }
-  }
+}
+
+toggleCreateForm = () => {
+  this.setState({
+    isFormVisible: !this.state.isFormVisible
+  })
+}
 
 submitForm = e => {
     e.preventDefault()
@@ -104,23 +111,23 @@ submitForm = e => {
         <footer className="app-footer">
           <nav>
             <ul>
-              <li>el1</li>
-              <li>el2</li>
-              <li>el3</li>
-              <li>el4</li>
-              <li>el5</li>
+              <li onClick={this.toggleCreateForm}>open</li>
             </ul>
           </nav>
         </footer>
         <div className="overlay app-new-task">
-          <Form 
-            onChange={this.handleOnChange} 
-            submitForm={this.submitForm} 
-            editedTodo={this.state.selectedTodo}
-            title={this.state.title}
-            date={this.state.date}
-            status={this.state.status}
-          />
+          {
+            this.state.isFormVisible 
+            &&
+            <Form 
+              onChange={this.handleOnChange} 
+              submitForm={this.submitForm} 
+              editedTodo={this.state.selectedTodo}
+              title={this.state.title}
+              date={this.state.date}
+              status={this.state.status}
+            />
+          }
         </div>
       </div>
     );
