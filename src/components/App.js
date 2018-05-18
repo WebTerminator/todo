@@ -15,7 +15,8 @@ class App extends Component {
       title: "",
       date: "",
       status: "",
-      selectedTodo: ""
+      selectedTodoID: "",
+      isEditingTrue: false
     }
   }
 
@@ -30,10 +31,13 @@ class App extends Component {
         editedTodo = todos[i]
       }
     }
+
     this.setState({
       title: editedTodo.title,
       date: editedTodo.date,
-      status: editedTodo.status
+      status: editedTodo.status,
+      selectedTodoID: editedTodo.id,
+      isEditingTrue: true,
     })
   }
 
@@ -61,17 +65,27 @@ class App extends Component {
 
 submitForm = e => {
     e.preventDefault()
-
-    const { addTodo } = this.props
+    const { addTodo, updateTodo } = this.props
     const s = this.state
-    const randomID = `id-${random.int()}`
 
-    addTodo(
-      randomID, 
-      s.title, 
-      s.date, 
-      s.status
-    )
+    if(this.state.isEditingTrue){
+      updateTodo(
+        this.state.selectedTodoID,
+        s.title, 
+        s.date, 
+        s.status
+      )
+    }
+    else {
+      const randomID = `id-${random.int()}`
+  
+      addTodo(
+        randomID, 
+        s.title, 
+        s.date, 
+        s.status
+      )
+    }
   }
 
   render() {

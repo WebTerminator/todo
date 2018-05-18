@@ -16,7 +16,7 @@ class Todo extends Component {
             date, 
             status, 
             updateTodo,
-            deleteTodo 
+            deleteTodo
         } = this.props
 
         return (

@@ -10,7 +10,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   addTodo: (id, date, title, status) => dispatch(addTodo(id, date, title, status)),
   deleteTodo: id => dispatch(deleteTodo(id)),
-  updateTodo: () => dispatch(updateTodo()) 
+  updateTodo: (id, title, date, status) => dispatch(updateTodo(id, title, date, status)) 
 })
  
 export default connect(

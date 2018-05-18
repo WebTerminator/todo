@@ -9,6 +9,14 @@ const getToDo = (state = todos, action) => {
             let newState = [...state]
             newState = newState.filter(item => item.id != action.id)
             return newState
+        case 'UPDATE_TODO':
+            const a = [...state]
+            for(let i = 0; i < a.length; i++){
+              if(a[i].id === action.id){
+                a[i].title = action.title
+              }
+            }
+            return a;
         default: 
             return state
     }
