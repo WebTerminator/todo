@@ -20,7 +20,7 @@ class Todo extends Component {
         } = this.props
 
         return (
-            <div>
+            <div className="todo">
                 <p>
                     {title} - 
                     {date} - 

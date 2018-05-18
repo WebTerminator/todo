@@ -2,8 +2,19 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+}
 
-  p {
-    color: red;
+.app {
+  &-task {
+    background-color: #ececec;
+    padding: 20px;
   }
+}
+
+.todo {
+  background-color: #fff;
+  padding: 20px;
+  margin: 0 0 20px 0;
+  border-radius: 4px;
+  box-shadow: 1px 1px 1px #ccc;
 }
