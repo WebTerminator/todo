@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 The aim of this application was to get more confortable with Redux and unit testing.
 
-The following has been used to create an application that tries to adhere to the React best practices:
+The following has been used:
 
 - propTypes validation to make sure that we are passing the right data through the props
 - unit testing to safeguard the codebase against any future changes
