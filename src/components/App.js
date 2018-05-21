@@ -18,7 +18,7 @@ class App extends Component {
       date: "",
       status: "",
       selectedTodoID: "",
-      isEditingTrue: false,
+      isEditing: false,
       isFormVisible: false
     }
   }
@@ -40,7 +40,7 @@ class App extends Component {
       date: editedTodo.date,
       status: editedTodo.status,
       selectedTodoID: editedTodo.id,
-      isEditingTrue: true,
+      isEditing: true,
     })
   }
 
@@ -49,7 +49,6 @@ class App extends Component {
           value = current.value
     
     if(isName(current.name, 'title')){
-      {/* check if there is a way to update state only once for better performance */}
       this.setState({
         title: value
       })
@@ -72,12 +71,32 @@ toggleCreateForm = () => {
   })
 }
 
+resetisEditing = () => {
+  this.setState({
+    isEditing: false
+  })
+}
+
+resetForm = () => {
+  this.setState({
+    title: "",
+    date: "",
+    status: "",
+  })
+}
+
+handleClosingForm = () => {
+  this.resetisEditing()
+  this.resetForm()
+  this.toggleCreateForm()
+}
+
 submitForm = e => {
     e.preventDefault()
     const { addTodo, updateTodo } = this.props
     const s = this.state
 
-    if(this.state.isEditingTrue){
+    if(this.state.isEditing){
       updateTodo(
         this.state.selectedTodoID,
         s.title, 
@@ -99,6 +118,14 @@ submitForm = e => {
 
   render() {
     const { todos, deleteTodo } = this.props
+    const { 
+      selectedTodo, 
+      title, 
+      date, 
+      status, 
+      isEditing 
+    } = this.state
+
     return (
       <div className={"app " + (this.state.isFormVisible ? "show-form" : "")}>
         <header className="app-header">
@@ -115,15 +142,16 @@ submitForm = e => {
           <button className="add" onClick={this.toggleCreateForm}>add a new task</button>
         </footer>
         <div className="overlay app-new-task">
-            <button className="f-right close" onClick={this.toggleCreateForm}>close</button>
+            <button className="f-right close" onClick={this.handleClosingForm}>close</button>
             <Form 
               onChange={this.handleOnChange} 
               submitForm={this.submitForm} 
-              editedTodo={this.state.selectedTodo}
-              title={this.state.title}
-              date={this.state.date}
-              status={this.state.status}
+              editedTodo={selectedTodo}
+              title={title}
+              date={date}
+              status={status}
               toggleFormVisibility={this.toggleCreateForm}
+              isEditing={isEditing}
             />
         </div>
       </div>

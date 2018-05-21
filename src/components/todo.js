@@ -7,8 +7,8 @@ class Todo extends Component {
 
     handleUpdate = e => {
         const { updateTodo, toggleFormVisibility } = this.props
-        updateTodo(e)
         toggleFormVisibility()
+        updateTodo(e)
     }
 
     render() {

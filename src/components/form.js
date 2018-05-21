@@ -18,7 +18,8 @@ class Form extends Component {
             editedTodo, 
             title, 
             date, 
-            status 
+            status,
+            isEditingTrue
         } = this.props
 
         return(
@@ -46,7 +47,7 @@ class Form extends Component {
             />
 
             <button className="create" onClick={this.handleCreateTodo}>
-              create
+              { isEditingTrue ? "update" : "create"}
             </button>
           </form>
         )

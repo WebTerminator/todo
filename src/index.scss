@@ -50,6 +50,8 @@ button {
   &-task {
     background-color: #ececec;
     padding: 20px;
+    height: 310px;
+    overflow: scroll;
   }
 }
 
