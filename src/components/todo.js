@@ -6,8 +6,9 @@ class Todo extends Component {
     }
 
     handleUpdate = e => {
-        {/* needs the isFormVisible value to open it if it's closed */}
-        this.props.updateTodo(e)
+        const { updateTodo, toggleFormVisibility } = this.props
+        updateTodo(e)
+        toggleFormVisibility()
     }
 
     render() {
@@ -38,7 +39,7 @@ class Todo extends Component {
     }
 }
 
-const renderTodos = (todos, updateTodo, deleteTodo) => {
+const renderTodos = (todos, updateTodo, deleteTodo, toggleFormVisibility) => {
     const todosList = todos.map((el, i) => 
         <Todo 
             key={el.title} 
@@ -48,6 +49,7 @@ const renderTodos = (todos, updateTodo, deleteTodo) => {
             id={el.id}
             updateTodo={updateTodo}
             deleteTodo={deleteTodo}
+            toggleFormVisibility={toggleFormVisibility}
         />
     )
     return todosList

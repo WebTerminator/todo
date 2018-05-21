@@ -7,6 +7,8 @@ import Form from './form'
 import random  from 'random-utility'
 import { getValue, isName } from './../util/'
 
+import PropTypes from 'prop-types';
+
 class App extends Component {
   constructor(props) {
     super(props)
@@ -105,15 +107,15 @@ submitForm = e => {
         <section className="app-inner">
           <div className="app-list">
             <div className="app-task">
-              {renderTodos(todos, this.handleFormData, deleteTodo)}
+              {renderTodos(todos, this.handleFormData, deleteTodo, this.toggleCreateForm)}
             </div>
           </div>
         </section>
         <footer className="app-footer">
-          <button onClick={this.toggleCreateForm}>add a new task</button>
+          <button className="add" onClick={this.toggleCreateForm}>add a new task</button>
         </footer>
         <div className="overlay app-new-task">
-            <button onClick={this.toggleCreateForm}>close</button>
+            <button className="f-right close" onClick={this.toggleCreateForm}>close</button>
             <Form 
               onChange={this.handleOnChange} 
               submitForm={this.submitForm} 
@@ -121,11 +123,24 @@ submitForm = e => {
               title={this.state.title}
               date={this.state.date}
               status={this.state.status}
+              toggleFormVisibility={this.toggleCreateForm}
             />
         </div>
       </div>
     );
   }
 }
+
+App.propTypes = {
+  addTodo: PropTypes.func,
+  updateTodo: PropTypes.func,
+  deleteTodo: PropTypes.func,
+  todos: PropTypes.arrayOf(PropTypes.shape({ 
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    date: PropTypes.string.isRequired,
+    status: PropTypes.string.isRequired,
+  })).isRequired,
+};
 
 export default App;

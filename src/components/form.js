@@ -4,6 +4,13 @@ import Input from './../input'
 
 
 class Form extends Component {
+    handleCreateTodo = e => {
+      const { submitForm, toggleFormVisibility } = this.props
+
+      submitForm(e)
+      toggleFormVisibility()
+    }
+
     render() {
         const { 
             onChange, 
@@ -21,7 +28,7 @@ class Form extends Component {
               type="text" 
               placeholder="task title"
               value={title} 
-              onChange={onChange} 
+              onChange={onChange}
             />
             <Input 
               name="date" 
@@ -38,7 +45,7 @@ class Form extends Component {
               onChange={onChange} 
             />
 
-            <button onClick={submitForm}>
+            <button className="create" onClick={this.handleCreateTodo}>
               create
             </button>
           </form>
