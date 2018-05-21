@@ -6,6 +6,7 @@ class Todo extends Component {
     }
 
     handleUpdate = e => {
+        {/* needs the isFormVisible value to open it if it's closed */}
         this.props.updateTodo(e)
     }
 

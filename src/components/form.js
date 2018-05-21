@@ -19,18 +19,21 @@ class Form extends Component {
             <Input 
               name="title" 
               type="text" 
+              placeholder="task title"
               value={title} 
               onChange={onChange} 
             />
             <Input 
               name="date" 
-              type="text"  
+              type="date" 
+              placeholder="choose a date" 
               value={date} 
               onChange={onChange} 
             />
             <Input 
               name="status" 
               type="text" 
+              placeholder="set priority"
               value={status} 
               onChange={onChange} 
             />

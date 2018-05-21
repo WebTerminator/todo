@@ -4,7 +4,45 @@ body {
   font-family: sans-serif;
 }
 
+button,
+input {
+  -webkit-appearance: none;
+}
+
+button {
+  cursor: pointer;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  margin-right: 10px;
+}
+
 .app {
+  width: 420px;
+  height: 474px;
+  margin: 0 auto;
+  position: relative;
+
+  &-header,
+  &-inner,
+  &-footer {
+    opacity: 1;
+    transition: all .3s ease-in-out;
+  }
+
+  &-header,
+  &-footer {
+    background-color: #64b0ff;
+    padding: 20px;
+  }
+
+  &-header {
+    h2 {
+      margin: 0;
+      color: #fff;
+      text-align: center;
+    }
+  }
+
   &-task {
     background-color: #ececec;
     padding: 20px;
@@ -17,4 +55,43 @@ body {
   margin: 0 0 20px 0;
   border-radius: 4px;
   box-shadow: 1px 1px 1px #ccc;
+}
+
+.show-form {
+  .overlay {
+    opacity: 1;
+    top: 10px;
+  }
+
+  .app {
+    &-header,
+    &-inner,
+    &-footer {
+      opacity: .6;
+    }
+  }
+}
+
+.overlay {
+  opacitY: 0;
+  position: absolute;
+  width: 94%;
+  top: -500px;
+  background-color: #fff;
+  left: 3%;
+  height: 405px;
+  padding: 10px;
+  box-sizing: border-box;
+  transition: all .3s ease-in-out;
+}
+
+form {
+  input {
+    box-sizing: border-box;
+    width: 100%;
+    margin-bottom: 30px;
+    padding: 10px 10px 10px 0;
+    border: 0;
+    border-bottom: 1px solid #333;
+  }
 }

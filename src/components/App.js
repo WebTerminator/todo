@@ -98,27 +98,22 @@ submitForm = e => {
   render() {
     const { todos, deleteTodo } = this.props
     return (
-      <div className="app">
-        <header className="app-header"></header>
+      <div className={"app " + (this.state.isFormVisible ? "show-form" : "")}>
+        <header className="app-header">
+          <h2>Todos</h2>
+        </header>
         <section className="app-inner">
           <div className="app-list">
             <div className="app-task">
-              <h2>Todos</h2>
               {renderTodos(todos, this.handleFormData, deleteTodo)}
             </div>
           </div>
         </section>
         <footer className="app-footer">
-          <nav>
-            <ul>
-              <li onClick={this.toggleCreateForm}>open</li>
-            </ul>
-          </nav>
+          <button onClick={this.toggleCreateForm}>add a new task</button>
         </footer>
         <div className="overlay app-new-task">
-          {
-            this.state.isFormVisible 
-            &&
+            <button onClick={this.toggleCreateForm}>close</button>
             <Form 
               onChange={this.handleOnChange} 
               submitForm={this.submitForm} 
@@ -127,7 +122,6 @@ submitForm = e => {
               date={this.state.date}
               status={this.state.status}
             />
-          }
         </div>
       </div>
     );
