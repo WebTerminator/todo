@@ -2,7 +2,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Todo with React, Redux, ES6 and unit testing (Enzyme and Jest)
 
-The aim of this application was to get more confortable with Redux and unit testing.
+The aim of this application was to get more comfortable with Redux and unit testing.
 
 The following has been used:
 
@@ -16,7 +16,7 @@ The following has been used:
 ## Further considerations
 
 - the form would definetely benefit from a validation
-- localStorage could be added to gurantee the application to work regardless of the network being down
+- localStorage could be added to guarantee the application to work regardless of the network being down
 - UI could be improved with a more appropriate design
 - further snapshots test could be added
 - a filtering functionlaity could be added
